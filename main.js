@@ -63,3 +63,16 @@ if (resultado !== undefined) {
     alert("El resultado de la " + operacion + " es: " + resultado);
 }
 
+
+
+//funcion
+
+
+function saludar(saludo, nombre) {
+    console.log(`${saludo} ${nombre}`);
+}
+
+let saludo = prompt("Ingrese el saludo");
+let nombre = prompt("Ingrese el nombre");
+
+saludar("saludo", "nombre");
