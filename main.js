@@ -77,6 +77,10 @@
 
 // saludar("saludo", "nombre");
 
+
+
+//DEJE LA PRIMERA PARTE COMO COMENTARIO PARA NO PERDER LO QUE YA REALICE
+
 const productos = [
     {
         id: 1,
@@ -89,22 +93,62 @@ const productos = [
         id: 2,
         nombre: "Body",
         descripcion: "body manga corta, cuello americano",
-        precio: 7500,
+        precio: 7000,
         categoria: "nena",
     },
+
     {
         id: 3,
+        nombre: "vestido",
+        descripcion: "vestido con animales",
+        precio: 10000,
+        categoria: "nena",
+    },
+
+    {
+        id: 4,
+        nombre: "conjunto",
+        descripcion: "conjunto de musculosa y short",
+        precio: 10000,
+        categoria: "nene",
+    },
+
+    {
+        id: 5,
         nombre: "Body",
-        descripcion: "body manga corta y short",
-        precio: 11000,
+        descripcion: "body manga corta con monito",
+        precio: 7000,
         categoria: "nene",
     },
     {
-        id: 4,
+        id: 6,
         nombre: "Osito",
         descripcion: "osito largo",
         precio: 7000,
         categoria: "nene",
+    },
+
+    {
+        id: 7,
+        nombre: "Babitas",
+        descripcion: "pack de babitas",
+        precio: 4000,
+        categoria: "accesorio",
+    },
+
+    {
+        id: 8,
+        nombre: "toallon",
+        descripcion: "toallon con capucha + babita",
+        precio: 7500,
+        categoria: "accesorio",
+    },
+    {
+        id: 9,
+        nombre: "cambiador",
+        descripcion: "cambiador con animales",
+        precio: 7000,
+        categoria: "accesorio",
     },
 ];
 
@@ -143,10 +187,19 @@ function mostrarProductos() {
 }
 
 function verDetalle() {
-    const nombre = prompt("Ingrese el nombre del producto que desea ver");
+    const opcion = prompt("Ingrese el nombre o categoría del producto que desea ver");
+
+    if (!opcion) {
+        alert("Por favor, ingrese un nombre o categoría válida.");
+        return;
+    }
+
     const productosEncontrados = productos.filter(
-        (producto) => producto.nombre.toLowerCase() === nombre.toLowerCase()
+        (producto) =>
+            producto.nombre.toLowerCase().includes(opcion.toLowerCase()) ||
+            producto.categoria.toLowerCase().includes(opcion.toLowerCase())
     );
+
     if (productosEncontrados.length) {
         let listaProductos = "";
         productosEncontrados.forEach((producto) => {
@@ -159,7 +212,7 @@ function verDetalle() {
         });
         alert(listaProductos);
     } else {
-        alert("El producto ingresado no existe");
+        alert("No se encontraron productos con el nombre o categoría ingresados");
     }
 }
 
