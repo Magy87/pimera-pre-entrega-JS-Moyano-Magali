@@ -1,4 +1,4 @@
-;
+
     const contenedorCarrito = document.getElementById('contenedor-carrito');
     const boton = document.getElementById('boton');
 
@@ -6,10 +6,9 @@
 
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-let carritoStorage = localStorage.getItem("carrito");
+ let carritoStorage = localStorage.getItem("carrito");
 
-
-const mostrarProductos = () => {
+ const mostrarProductos = () => {
     productos.forEach(producto => {
         contenedorProductos.innerHTML += `
             <div class="prod-container">
@@ -22,6 +21,8 @@ const mostrarProductos = () => {
         `;
     });
 }
+
+
 const mostrarCarrito = () => {
     contenedorCarrito.innerHTML = '<h2>Carrito:</h2>';
     carrito.forEach(item => {
@@ -31,41 +32,62 @@ const mostrarCarrito = () => {
                 <h2>${item.nombre}</h2>
                 <p>${item.categoria}</p>
                 <p>$${item.precio}</p>
+                <button class="eliminar" data-id="${item.id}">Eliminar</button>
             </div>
         `;
     });
 }
-// Función para agregar un producto al carrito
 const agregarAlCarrito = (id) => {
     const producto = productos.find(producto => producto.id == id);
     carrito.push(producto);
     actualizarLocalStorage();
     mostrarCarrito();
+  
 }
 
-// Función para vaciar el carrito
+const eliminarDelCarrito = (id) => {
+    carrito = carrito.filter(producto => producto.id != id);
+    carrito.shift(productos);
+    actualizarLocalStorage();
+    mostrarCarrito();
+    
+
+}
+
+
 const vaciarCarrito = () => {
     carrito = [];
     actualizarLocalStorage();
     mostrarCarrito();
 }
 
-// Función para actualizar el almacenamiento local con el carrito actual
 const actualizarLocalStorage = () => {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-// Event listener para agregar productos al carrito
 contenedorProductos.addEventListener('click', (e) => {
-        if (e.target.classList.contains('agregar')) {
-            const id = e.target.id;
-            agregarAlCarrito(id);
-        }
-    });
-// Event listener para vaciar el carrito
-boton.addEventListener('click', vaciarCarrito);
+    if (e.target.classList.contains('agregar')) {
+        const id = e.target.id;
+        agregarAlCarrito(id);
+    }
+});
 
-// Mostrar productos y carrito cuando se carga la página
+contenedorCarrito.addEventListener('click', (e) => {
+    if (e.target.classList.contains('eliminar')) {
+        const id = e.target.dataset.id;
+        eliminarDelCarrito(id);
+    }
+});
+
+boton.addEventListener('click', vaciarCarrito);
+boton.addEventListener("click", () => {
+    localStorage.clear(); 
+    Swal.fire("carrito vacio!");;
+ 
+  });
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     mostrarProductos();
     mostrarCarrito();
