@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    width: 15rem;
+    height: 15rem;
+}
+
+.fondo{
+    display: flex;
+    flex-direction: column;
+}
+.prod-container {
+    text-align: center;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 2rem;
+    margin: 2rem;
+}
