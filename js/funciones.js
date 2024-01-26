@@ -108,10 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const manejarBusqueda = () => {
     const inputBusqueda = document.getElementById('input-busqueda');
-    const btnBuscar = document.getElementById('btn-buscar');
     const resultadosBusqueda = document.getElementById('resultados-busqueda');
 
-    btnBuscar.addEventListener('click', () => {
+    inputBusqueda.addEventListener('input', () => {
         const valorBusqueda = inputBusqueda.value.toLowerCase();
         const resultados = productos.filter(producto =>
             producto.nombre.toLowerCase().includes(valorBusqueda) ||
@@ -121,7 +120,6 @@ const manejarBusqueda = () => {
         mostrarResultadosBusqueda(resultados, resultadosBusqueda);
     });
 }
-
 const mostrarResultadosBusqueda = (resultados, contenedor) => {
     contenedor.innerHTML = '';
 
@@ -147,4 +145,5 @@ document.addEventListener('DOMContentLoaded', () => {
     manejarBusqueda();
     mostrarProductos();
 });
+
 
