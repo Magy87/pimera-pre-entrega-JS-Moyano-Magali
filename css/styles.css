@@ -1,17 +1,27 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 img {
     width: 15rem;
     height: 15rem;
 }
 
-.fondo{
+.titulo {
+    color: rgb(95, 30, 95);
+    font-family: 'Arenas movedizas', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.fondo {
     display: flex;
     flex-direction: column;
 }
+
 .prod-container {
     text-align: center;
     display: inline-block;
@@ -20,3 +30,44 @@ img {
     margin: 2rem;
 }
 
+
+.rojo {
+    color: red;
+}
+.azul{
+    color:rgb(7, 7, 99)
+}
+
+.agregar {
+    border: none;
+    color: black;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid #04AA6D;
+
+}
+
+.agregar:hover {
+    background-color: #46a049;
+    color: white;
+}
+
+
+.eliminar {
+    border: none;
+    color: black;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid #f44336;
+}
+
+
+.eliminar:hover {
+    background: #da190b;
+    color: white;
+
+}

@@ -15,7 +15,7 @@ const productos = [
         nombre: "Body",
         descripcion: "body manga corta, cuello americano",
         precio: 7000,
-        categoria: "nena",
+        categoria: "Nena",
     },
 
     {
@@ -24,7 +24,7 @@ const productos = [
         nombre: "Vestido",
         descripcion: "vestido con animales",
         precio: 10000,
-        categoria: "nena",
+        categoria: "Nena",
     },
 
     {
@@ -33,7 +33,7 @@ const productos = [
         nombre: "Conjunto",
         descripcion: "conjunto de musculosa y short",
         precio: 10000,
-        categoria: "nene",
+        categoria: "Nene",
     },
 
     {
@@ -42,7 +42,7 @@ const productos = [
         nombre: "Body",
         descripcion: "body manga corta con monito",
         precio: 7000,
-        categoria: "nene",
+        categoria: "Nene",
     },
     {
         id: 6,
@@ -50,7 +50,7 @@ const productos = [
         nombre: "Osito",
         descripcion: "osito largo",
         precio: 7000,
-        categoria: "nene",
+        categoria: "Nene",
     },
 
     {
@@ -59,7 +59,7 @@ const productos = [
         nombre: "Babitas",
         descripcion: "pack de babitas",
         precio: 4000,
-        categoria: "accesorio",
+        categoria: "Accesorio",
     },
 
     {
@@ -68,7 +68,7 @@ const productos = [
         nombre: "Toallon",
         descripcion: "toallon con capucha + babita",
         precio: 7500,
-        categoria: "accesorio",
+        categoria: "Accesorio",
     },
     {
         id: 9,
@@ -76,7 +76,7 @@ const productos = [
         nombre: "Cambiador",
         descripcion: "cambiador con animales",
         precio: 7000,
-        categoria: "accesorio",
+        categoria: "Accesorio",
     },
 ];
 
