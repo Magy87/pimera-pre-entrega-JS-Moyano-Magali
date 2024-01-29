@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarCarrito();
 });
 
+//se me modifica la barra de navegador cuando m
 // const manejarBusqueda = () => {
 //     const inputBusqueda = document.getElementById('input-busqueda');
 //     const resultadosBusqueda = document.getElementById('resultados-busqueda');
