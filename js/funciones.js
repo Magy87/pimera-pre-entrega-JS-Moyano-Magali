@@ -1,15 +1,14 @@
 
-    const contenedorCarrito = document.getElementById('contenedor-carrito');
-    const boton = document.getElementById('boton');
+const contenedorCarrito = document.getElementById('contenedor-carrito');
+const boton = document.getElementById('boton');
 
-  
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let carritoStorage = localStorage.getItem("carrito");
 
- let carritoStorage = localStorage.getItem("carrito");
+//Productos Disponibles
 
- const mostrarProductos = () => {
-
+const mostrarProductos = () => {
     contenedorProductos.innerHTML = '';
 
     productos.forEach(producto => {
@@ -24,6 +23,8 @@
         `;
     });
 }
+
+//Productos en el carrito
 
 const mostrarCarrito = () => {
     contenedorCarrito.innerHTML = '<h2>Carrito:</h2>';
@@ -48,11 +49,8 @@ const agregarAlCarrito = (id) => {
         carrito.push(producto);
         actualizarLocalStorage();
         mostrarCarrito();
-    } else {
-        console.error("Producto no encontrado");
     }
 }
-
 
 const eliminarProductoDelCarrito = (id) => {
     const indice = carrito.findIndex(producto => producto.id == id);
@@ -61,8 +59,7 @@ const eliminarProductoDelCarrito = (id) => {
         carrito.splice(indice, 1);
         actualizarLocalStorage();
         mostrarCarrito();
-    } else {
-        console.error("Producto no encontrado en el carrito");
+
     }
 }
 
@@ -83,7 +80,6 @@ contenedorProductos.addEventListener('click', (e) => {
     }
 });
 
-
 contenedorCarrito.addEventListener('click', (e) => {
     if (e.target.classList.contains('eliminar')) {
         const id = e.target.dataset.id;
@@ -93,10 +89,10 @@ contenedorCarrito.addEventListener('click', (e) => {
 
 boton.addEventListener('click', vaciarCarrito);
 boton.addEventListener("click", () => {
-    localStorage.clear(); 
+    localStorage.clear();
     Swal.fire("Carrito Vacío!");;
- 
-  });
+
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     mostrarProductos();
