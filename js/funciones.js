@@ -27,7 +27,7 @@ const mostrarProductos = () => {
 //Productos en el carrito
 
 const mostrarCarrito = () => {
-    contenedorCarrito.innerHTML = '<h2>Carrito:</h2>';
+    contenedorCarrito.innerHTML = '<h2 class="carrito">Carrito:</h2>';
     carrito.forEach(item => {
         contenedorCarrito.innerHTML += `
             <div class="prod-container">
