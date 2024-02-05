@@ -1,4 +1,5 @@
- const contenedorProductos = document.getElementById('contenedor-productos');
+
+const contenedorProductos = document.getElementById('contenedor-productos');
 
 const productos = [
     {

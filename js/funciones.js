@@ -1,17 +1,33 @@
 
-const contenedorCarrito = document.getElementById('contenedor-carrito');
 const boton = document.getElementById('boton');
 
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 let carritoStorage = localStorage.getItem("carrito");
 
-//Productos Disponibles
 
-const mostrarProductos = () => {
+ let contenedorProductos = document.getElementById("contenedorproductos");
+
+
+
+
+const cargarProductosDesdeJSON = async () => {
+    try {
+        const response = await fetch("productos.json");
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error al cargar productos desde JSON:', error);
+    }
+};
+
+
+// Productos Disponibles
+const mostrarProductos = async () => {
+    const productosJSON = await cargarProductosDesdeJSON();
     contenedorProductos.innerHTML = '';
 
-    productos.forEach(producto => {
+    productosJSON.forEach(producto => {
         contenedorProductos.innerHTML += `
             <div class="prod-container">
                 <img src="${producto.img}" />
@@ -22,10 +38,25 @@ const mostrarProductos = () => {
             </div>
         `;
     });
-}
+};
+// const mostrarProductos = () => {
+//     contenedorProductos.innerHTML = '';
 
-//Productos en el carrito
+//     productos.forEach(producto => {
+//         contenedorProductos.innerHTML += `
+//             <div class="prod-container">
+//                 <img src="${producto.img}" />
+//                 <h2 class="rojo">${producto.nombre}</h2>            
+//                 <p>${producto.categoria}</p>
+//                 <p>$${producto.precio}</p>
+//                 <button id="${producto.id}" class="agregar">Agregar al carrito</button>
+//             </div>
+//         `;
+//     });
+// }
 
+
+// Productos en el carrito
 const mostrarCarrito = () => {
     contenedorCarrito.innerHTML = '<h2 class="carrito">Carrito:</h2>';
     carrito.forEach(item => {
@@ -39,39 +70,7 @@ const mostrarCarrito = () => {
             </div>
         `;
     });
-}
-
-
-const agregarAlCarrito = (id) => {
-    const producto = productos.find(producto => producto.id == id);
-
-    if (producto) {
-        carrito.push(producto);
-        actualizarLocalStorage();
-        mostrarCarrito();
-    }
-}
-
-const eliminarProductoDelCarrito = (id) => {
-    const indice = carrito.findIndex(producto => producto.id == id);
-
-    if (indice !== -1) {
-        carrito.splice(indice, 1);
-        actualizarLocalStorage();
-        mostrarCarrito();
-
-    }
-}
-
-const vaciarCarrito = () => {
-    carrito = [];
-    actualizarLocalStorage();
-    mostrarCarrito();
-}
-
-const actualizarLocalStorage = () => {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-}
+};
 
 contenedorProductos.addEventListener('click', (e) => {
     if (e.target.classList.contains('agregar')) {
@@ -87,16 +86,20 @@ contenedorCarrito.addEventListener('click', (e) => {
     }
 });
 
+
+
 boton.addEventListener('click', vaciarCarrito);
 boton.addEventListener("click", () => {
     localStorage.clear();
-    Swal.fire("Carrito Vacío!");;
-
+    mostrarCarrito(); 
+    mostrarMensaje("Carrito Vacío!");
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    mostrarProductos();
+document.addEventListener('DOMContentLoaded', async () => {
+  
+    await mostrarProductos();
 
+   
     if (!localStorage.getItem('carrito') || carrito.length === 0) {
         carrito = [];
         actualizarLocalStorage();
@@ -105,9 +108,35 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarCarrito();
 });
 
+
+
+
+// contenedorProductos.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('agregar')) {
+//         const id = e.target.id;
+//         agregarAlCarrito(id);
+//     }
+// });
+
+// contenedorCarrito.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('eliminar')) {
+//         const id = e.target.dataset.id;
+//         eliminarProductoDelCarrito(id);
+//     }
+// });
+
+boton.addEventListener('click', vaciarCarrito);
+boton.addEventListener("click", () => {
+    localStorage.clear();
+    Swal.fire("Carrito Vacío!");;
+
+});
+
+
+
 //se me modifica la barra de navegador cuando m
 // const manejarBusqueda = () => {
-//     const inputBusqueda = document.getElementById('input-busqueda');
+//     const inputBusqueda = document.getElementById('buscar-input'); // Utiliza el ID correcto para tu campo de entrada
 //     const resultadosBusqueda = document.getElementById('resultados-busqueda');
 
 //     inputBusqueda.addEventListener('input', () => {
@@ -119,7 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //         mostrarResultadosBusqueda(resultados, resultadosBusqueda);
 //     });
-// }
+// };
+
 // const mostrarResultadosBusqueda = (resultados, contenedor) => {
 //     contenedor.innerHTML = '';
 
@@ -139,11 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
 //             </div>
 //         `;
 //     });
-// }
+// };
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     manejarBusqueda();
 //     mostrarProductos();
 // });
-
 
