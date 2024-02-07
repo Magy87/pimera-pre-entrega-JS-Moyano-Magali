@@ -30,7 +30,6 @@ const mostrarProductos = async () => {
 
     contenedorProductos.innerHTML += productoHTML;
 
-    // Agregar evento de clic al botón "Agregar al carrito"
     const botonAgregar = contenedorProductos.querySelector(`#${producto.id}`);
     botonAgregar.addEventListener("click", () => agregarAlCarrito(producto));
   });
@@ -40,7 +39,7 @@ const agregarAlCarrito = (producto) => {
   carrito.push(producto);
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
-  // Llamas a la función para mostrar el carrito actualizado
+
   mostrarCarrito();
 };
 
@@ -59,7 +58,7 @@ const mostrarCarrito = () => {
     `;
   });
 
-  // Agregar evento de clic a los botones "Eliminar del carrito"
+
   carrito.forEach((item) => {
     const botonEliminar = contenedorCarrito.querySelector(`#${item.id}`);
     botonEliminar.addEventListener("click", () => eliminarDelCarrito(item.id));
@@ -72,7 +71,6 @@ const eliminarDelCarrito = (productoId) => {
   mostrarCarrito();
 };
 
-// Llamada inicial para mostrar productos y el carrito
 mostrarProductos();
 mostrarCarrito();
 
@@ -95,6 +93,16 @@ boton.addEventListener("click", () => {
 //         eliminarProductoDelCarrito(id);
 //     }
 // });
+
+
+
+
+
+
+
+
+
+
 
 
 //se me modifica la barra de navegador cuando m
