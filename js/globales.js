@@ -1,5 +1,5 @@
-
-const contenedorProductos = document.getElementById('contenedor-productos');
+const contenedorProductos = document.getElementById("contenedor-productos");
+const contenedorCarrito = document.getElementById("contenedor-carrito");
 
 const productos = [
     {
@@ -84,4 +84,6 @@ const productos = [
 
 // localStorage.setItem("carrito",JSON.stringify(productos))
 
-JSON.parse(localStorage.getItem("productos"))||localStorage.setItem("productos",JSON.stringify(productos))
+JSON.parse(localStorage.getItem("productos")) ||
+  localStorage.setItem("productos", JSON.stringify(productos));
+//   JSON.parse(localStorage.getItem("carrito")) || localStorage.setItem("carrito", JSON.stringify([]))
