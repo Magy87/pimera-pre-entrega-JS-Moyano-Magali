@@ -95,6 +95,14 @@ img {
     grid-template-rows: 1fr 1fr;
 }
 
+#contenedor-carrito{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
 .rojo {
     color: red;
 }
