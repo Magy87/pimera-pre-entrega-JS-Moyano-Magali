@@ -1,5 +1,5 @@
-const contenedorProductos = document.getElementById("contenedor-productos");
-const contenedorCarrito = document.getElementById("contenedor-carrito");
+// const contenedorProductos = document.getElementById("contenedor-productos");
+// const contenedorCarrito = document.getElementById("contenedor-carrito");
 
 const productos = [
     {

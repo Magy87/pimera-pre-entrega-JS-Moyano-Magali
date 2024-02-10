@@ -1,6 +1,6 @@
 
-document.addEventListener('DOMContentLoaded', mostrarProductos);
+// document.addEventListener('DOMContentLoaded', mostrarProductos);
 
 
-contenedorProductos.addEventListener('click', agregarAlCarrito);
+// contenedorProductos.addEventListener('click', agregarAlCarrito);
 
