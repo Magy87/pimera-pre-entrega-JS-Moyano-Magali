@@ -4,6 +4,7 @@ const contenedorCarrito = document.getElementById("contenedor-carrito");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+//traer producto de json
 const cargarProductosDesdeJSON = async () => {
   try {
     const response = await fetch("js/productos.json");
