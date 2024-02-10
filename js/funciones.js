@@ -93,8 +93,7 @@ const mostrarCarrito = () => {
         icon: "error",
         title: "Eliminado",
         showConfirmButton: false,
-        timer: 1000,
-      });
+        timer: 1000,      });
     });
   });
 };
